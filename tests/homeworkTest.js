@@ -7,7 +7,10 @@ import users from '../data/users.json';
 const loginPage = new LoginPage(),
       mainDashboardPage = new MainDashboardPage(),
       projectPage = new ProjectPage(),
-      previewPage = new PreviewPage();   
+      previewPage = new PreviewPage(); 
+      
+let firstComment = 'First Comment',
+    secondComment = 'Second Comment';     
 
 
 describe('QA - test scenario', () => {
@@ -21,6 +24,7 @@ describe('QA - test scenario', () => {
     it('User should be able to create new project', () => {
         
         mainDashboardPage.createNewProject('New Project');
+        expect(browser.getUrl()).to.contain('https://app.uxpin.com/edit/');
     });
 
     it('User should be able to add recangle to the design', () => {
@@ -32,12 +36,15 @@ describe('QA - test scenario', () => {
         
         projectPage.goToMyProject(2);
         mainDashboardPage.openPreview();
+        expect(browser.getUrl()).to.contain('https://preview.uxpin.com/');
     });
 
     it('User should be able to add and edit a comment', () => {
         
-        previewPage.addComment("New Comment");
-        previewPage.editComment("Edited Comment");
+        previewPage.addComment(firstComment);
+        expect(previewPage.getCommentText()).to.contain(firstComment);
+        previewPage.editComment(secondComment);
+        expect(previewPage.getCommentText()).to.contain(secondComment);
     });
 
 });

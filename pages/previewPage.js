@@ -35,7 +35,7 @@ export class PreviewPage {
     }
 
     get commentText() {
-        return $('.comment-body')
+        return $('.comment-wrapper');
     }
 
     addComment(text) {
@@ -53,5 +53,9 @@ export class PreviewPage {
         this.commentField.clearValue();
         this.commentField.addValue(text);
         this.addCommentButton.click();
+    }
+
+    getCommentText() {
+        return this.commentText.getText();
     }
 }

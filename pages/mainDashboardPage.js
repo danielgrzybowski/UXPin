@@ -36,10 +36,11 @@ export class MainDashboardPage {
         browser.pause(timeouts.long);
         this.newPrototypeOption.waitForDisplayed(timeouts.long);
         this.newPrototypeOption.click();
+        browser.pause(timeouts.medium);
     }
 
     openPreview() {
-        browser.pause(timeouts.medium);
+        browser.pause(timeouts.long);
         this.designBox.moveTo();
         this.previewButton.waitForDisplayed(timeouts.long);
         this.previewButton.click();
